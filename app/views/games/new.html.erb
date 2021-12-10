@@ -1,19 +1,12 @@
 <ul class="list-of-words">
-  <%= @letters[0] %></li>
-  <%= @letters[1] %></li>
-  <%= @letters[2] %></li>
-  <%= @letters[3] %></li>
-  <%= @letters[4] %></li>
-  <%= @letters[5] %></li>
-  <%= @letters[6] %></li>
-  <%= @letters[7] %></li>
-  <%= @letters[8] %></li>
-  <%= @letters[9] %></li>
+  <% @letters.each do |letter| %>
+    <li><%= letter %></li>
+  <% end %>
 </ul>
 
 <form action="/score" method="post">
   <input type="text" name="word">
   <input type="submit" value="Your word" >
-  <input id="token" name="token" type="hidden" value="<% @letters %>" />
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
 </form>

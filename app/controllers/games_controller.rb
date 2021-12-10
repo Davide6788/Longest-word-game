@@ -8,7 +8,7 @@ class GamesController < ApplicationController
 
   def score
     attempt = params[:word]
-    letters = params[:token]
+    letters = params[:letters].split("")
     @answer = run_game(attempt, letters)
   end
 
@@ -34,6 +34,6 @@ class GamesController < ApplicationController
     alphabet_array = 'abcdefghijklmnopqrstuvwxyz'.chars
     grid = []
     10.times { grid << alphabet_array.sample(1) }
-    grid.join
+    grid.join.split
   end
 end
